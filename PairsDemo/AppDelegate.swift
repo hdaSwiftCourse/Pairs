@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let navigationController = UINavigationController()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //Get the size of the Device
@@ -22,9 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Set the Window Background Color to White
         window?.backgroundColor = UIColor.whiteColor()
         //Create and set a ViewController as RootViewController
-        window!.rootViewController = MenuViewController()
+        window!.rootViewController = navigationController
         //Make this window the key Window and make it visible
         window!.makeKeyAndVisible()
+        
+        navigationController.pushViewController(MenuViewController(), animated: false)
         
         return true
     }

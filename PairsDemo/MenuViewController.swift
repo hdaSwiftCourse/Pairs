@@ -15,6 +15,8 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Menu"
+        
         _menuView = MenuView(frame: view.bounds)
         view.addSubview(_menuView)
     }
