@@ -10,6 +10,8 @@ import UIKit
 
 class GameView: UIView {
     
+    private var _cards = [Int]()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -23,6 +25,25 @@ class GameView: UIView {
     }
     
     func createGamefield() {
+        let numberOfCards = 12
+        for i in 0..<numberOfCards {
+            _cards.append(-1)
+        }
+        
+        for i in 0..<6 {
+            var random: Int
+            do {
+                random = Int(arc4random() % UInt32(numberOfCards))
+            } while _cards[random] != -1
+            _cards[random] = i
+            
+            do {
+                random = Int(arc4random() % UInt32(numberOfCards))
+            } while _cards[random] != -1
+            _cards[random] = i
+        }
+        println(_cards)
+        
         let distance = (bounds.size.width - 100 * 3) / 4
         for i in 0..<4 {
             for j in 0..<3 {
