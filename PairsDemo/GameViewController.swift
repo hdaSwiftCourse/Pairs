@@ -57,7 +57,7 @@ class GameViewController: UIViewController {
     
     func buttonHandler(button: UIButton) {
         println("Button \(button.tag) tapped")
-        button.setImage(UIImage(named: _cardFronts[_cards[button.tag]]), forState: UIControlState.Normal)
+        button.setImage(UIImage(named: _cardFronts[_cards[(button.tag - 1)]]), forState: UIControlState.Normal)
         
         if _openCards.count == 2 {
             for cardTag in _openCards {
@@ -69,6 +69,19 @@ class GameViewController: UIViewController {
         }
         
         _openCards.append(button.tag)
+        
+        //Checken ob 2 Karten gleich sind
+        if _openCards.count == 2 {
+            if _cards[_openCards[0] - 1] == _cards[_openCards[1] - 1] {
+                println("Pair found")
+                for cardTag in _openCards {
+                    if let openButton = _gameView.viewWithTag(cardTag) as? UIButton {
+                        openButton.enabled = false
+                    }
+                }
+                _openCards.removeAll(keepCapacity: false)
+            }
+        }
     }
 
 }
