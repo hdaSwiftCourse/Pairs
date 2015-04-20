@@ -32,7 +32,7 @@ class GameView: UIView {
                 let y = 64 + distance + (100 + distance) * CGFloat(i)
                 let button = UIButton(frame: CGRectMake(x, y, 100, 100))
                 button.setImage(UIImage(named: "CardBack"), forState: UIControlState.Normal)
-                button.tag = i * 3 + j
+                button.tag = i * 3 + j + 1
                 addSubview(button)
                 buttons.append(button)
             }

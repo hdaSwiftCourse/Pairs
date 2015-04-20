@@ -59,6 +59,15 @@ class GameViewController: UIViewController {
         println("Button \(button.tag) tapped")
         button.setImage(UIImage(named: _cardFronts[_cards[button.tag]]), forState: UIControlState.Normal)
         
+        if _openCards.count == 2 {
+            for cardTag in _openCards {
+                if let openButton = _gameView.viewWithTag(cardTag) as? UIButton {
+                    openButton.setImage(UIImage(named: "CardBack"), forState: UIControlState.Normal)
+                }
+            }
+            _openCards.removeAll(keepCapacity: false)
+        }
+        
         _openCards.append(button.tag)
     }
 
