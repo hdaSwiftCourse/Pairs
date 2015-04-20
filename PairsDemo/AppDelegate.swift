@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Set the Window Background Color to White
         window?.backgroundColor = UIColor.whiteColor()
         //Create and set a ViewController as RootViewController
-        window!.rootViewController = ViewController()
+        window!.rootViewController = MenuViewController()
         //Make this window the key Window and make it visible
         window!.makeKeyAndVisible()
         
