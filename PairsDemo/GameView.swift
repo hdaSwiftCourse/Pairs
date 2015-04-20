@@ -10,9 +10,7 @@ import UIKit
 
 class GameView: UIView {
     
-    private let _cardFronts = [ "CardFront01", "CardFront02", "CardFront03", "CardFront04", "CardFront05", "CardFront06" ]
-    private var _cards = [Int]()
-    private var _openCards = [Int]()
+    var buttons = [UIButton]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,25 +25,6 @@ class GameView: UIView {
     }
     
     func createGamefield() {
-        let numberOfCards = 12
-        for i in 0..<numberOfCards {
-            _cards.append(-1)
-        }
-        
-        for i in 0..<6 {
-            var random: Int
-            do {
-                random = Int(arc4random() % UInt32(numberOfCards))
-            } while _cards[random] != -1
-            _cards[random] = i
-            
-            do {
-                random = Int(arc4random() % UInt32(numberOfCards))
-            } while _cards[random] != -1
-            _cards[random] = i
-        }
-        println(_cards)
-        
         let distance = (bounds.size.width - 100 * 3) / 4
         for i in 0..<4 {
             for j in 0..<3 {
@@ -54,17 +33,10 @@ class GameView: UIView {
                 let button = UIButton(frame: CGRectMake(x, y, 100, 100))
                 button.setImage(UIImage(named: "CardBack"), forState: UIControlState.Normal)
                 button.tag = i * 3 + j
-                button.addTarget(self, action: "buttonHandler:", forControlEvents: UIControlEvents.TouchUpInside)
                 addSubview(button)
+                buttons.append(button)
             }
         }
-    }
-    
-    func buttonHandler(button: UIButton) {
-        println("Button \(button.tag) tapped")
-        button.setImage(UIImage(named: _cardFronts[_cards[button.tag]]), forState: UIControlState.Normal)
-        
-        _openCards.append(button.tag)
     }
 
 }
