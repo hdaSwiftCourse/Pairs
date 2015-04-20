@@ -15,7 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        //Get the size of the Device
+        let rect = UIScreen.mainScreen().bounds
+        //Create the Window for the App
+        self.window = UIWindow(frame: rect)
+        //Set the Window Background Color to White
+        window?.backgroundColor = UIColor.whiteColor()
+        //Create and set a ViewController as RootViewController
+        window!.rootViewController = ViewController()
+        //Make this window the key Window and make it visible
+        window!.makeKeyAndVisible()
+        
         return true
     }
 
