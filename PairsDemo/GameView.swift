@@ -10,6 +10,7 @@ import UIKit
 
 class GameView: UIView {
     
+    private let _cardFronts = [ "CardFront01", "CardFront02", "CardFront03", "CardFront04", "CardFront05", "CardFront06" ]
     private var _cards = [Int]()
     
     override init(frame: CGRect) {
@@ -60,6 +61,7 @@ class GameView: UIView {
     
     func buttonHandler(button: UIButton) {
         println("Button \(button.tag) tapped")
+        button.setImage(UIImage(named: _cardFronts[_cards[button.tag]]), forState: UIControlState.Normal)
     }
 
 }
