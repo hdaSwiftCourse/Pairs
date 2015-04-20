@@ -30,6 +30,7 @@ class GameView: UIView {
                 let y = 64 + distance + (100 + distance) * CGFloat(i)
                 let button = UIButton(frame: CGRectMake(x, y, 100, 100))
                 button.backgroundColor = UIColor.blackColor()
+                button.setImage(UIImage(named: "CardBack"), forState: UIControlState.Normal)
                 addSubview(button)
             }
         }
