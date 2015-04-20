@@ -18,13 +18,18 @@ class MenuViewController: UIViewController {
         title = "Menu"
         
         _menuView = MenuView(frame: view.bounds)
+        _menuView.playButton.addTarget(self, action: "playButtonHandler", forControlEvents: UIControlEvents.TouchUpInside)
         view.addSubview(_menuView)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-
+    
+    func playButtonHandler() {
+        let controller = GameViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
 }
 
