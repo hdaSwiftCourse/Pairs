@@ -10,14 +10,17 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
+    private var _menuView: MenuView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        _menuView = MenuView(frame: view.bounds)
+        view.addSubview(_menuView)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 
