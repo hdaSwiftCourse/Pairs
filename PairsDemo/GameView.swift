@@ -24,16 +24,21 @@ class GameView: UIView {
     
     func createGamefield() {
         let distance = (bounds.size.width - 100 * 3) / 4
-        for i in 0...4 {
-            for j in 0...3 {
+        for i in 0..<4 {
+            for j in 0..<3 {
                 let x = distance + (100 + distance) * CGFloat(j)
                 let y = 64 + distance + (100 + distance) * CGFloat(i)
                 let button = UIButton(frame: CGRectMake(x, y, 100, 100))
-                button.backgroundColor = UIColor.blackColor()
                 button.setImage(UIImage(named: "CardBack"), forState: UIControlState.Normal)
+                button.tag = i * 3 + j
+                button.addTarget(self, action: "buttonHandler:", forControlEvents: UIControlEvents.TouchUpInside)
                 addSubview(button)
             }
         }
+    }
+    
+    func buttonHandler(button: UIButton) {
+        println("Button \(button.tag) tapped")
     }
 
 }
