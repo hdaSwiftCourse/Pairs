@@ -14,6 +14,7 @@ class GameViewController: UIViewController {
     private let _cardFronts = [ "CardFront01", "CardFront02", "CardFront03", "CardFront04", "CardFront05", "CardFront06" ]
     private var _cards = [Int]()
     private var _openCards = [Int]()
+    private var _pairCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +80,11 @@ class GameViewController: UIViewController {
                         openButton.enabled = false
                     }
                 }
+                _pairCount++
                 _openCards.removeAll(keepCapacity: false)
+            }
+            if _pairCount == 6 {
+                UIAlertView(title: "Finished", message: "You solved the game. Congratulations.", delegate: nil, cancelButtonTitle: "Thank you").show()
             }
         }
     }
