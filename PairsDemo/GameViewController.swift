@@ -59,11 +59,14 @@ class GameViewController: UIViewController {
     func buttonHandler(button: UIButton) {
         println("Button \(button.tag) tapped")
         button.setImage(UIImage(named: _cardFronts[_cards[(button.tag - 1)]]), forState: UIControlState.Normal)
+        button.enabled = false
+        button.adjustsImageWhenDisabled = false
         
         if _openCards.count == 2 {
             for cardTag in _openCards {
                 if let openButton = _gameView.viewWithTag(cardTag) as? UIButton {
                     openButton.setImage(UIImage(named: "CardBack"), forState: UIControlState.Normal)
+                    openButton.enabled = true
                 }
             }
             _openCards.removeAll(keepCapacity: false)
@@ -78,6 +81,7 @@ class GameViewController: UIViewController {
                 for cardTag in _openCards {
                     if let openButton = _gameView.viewWithTag(cardTag) as? UIButton {
                         openButton.enabled = false
+                        openButton.adjustsImageWhenDisabled = true
                     }
                 }
                 _pairCount++
