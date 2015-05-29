@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Friendship" representedClassName="Friendship" syncable="YES">
+        <attribute name="uid" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="friends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserData" inverseName="friendship" inverseEntity="UserData" syncable="YES"/>
+    </entity>
+    <entity name="UserData" representedClassName="UserData" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="uid" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="friendship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Friendship" inverseName="friends" inverseEntity="Friendship" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="UserData" positionX="268" positionY="-3735" width="128" height="88"/>
+        <element name="Friendship" positionX="583" positionY="-3729" width="128" height="73"/>
+    </elements>
+</model>
